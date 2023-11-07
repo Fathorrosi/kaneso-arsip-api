@@ -87,7 +87,13 @@ export class App {
       next();
     });
 
-    server.listen(this.port, () => console.log(`🚀 Server started at http://localhost:${this.port}\n🚨️ Environment: ${process.env.NODE_ENV}`));
+    const port = 3000;
+
+    server.listen(port, "0.0.0.0", function () {
+      console.log(`🚀 Server started at http://localhost:${port}\n🚨️ Environment: ${process.env.NODE_ENV}`);
+    });
+
+    // server.listen(this.port, () => console.log(`🚀 Server started at http://localhost:${this.port}\n🚨️ Environment: ${process.env.NODE_ENV}`));
 
     useSocketServer(io, {
       controllers: [__dirname + appConfig.controllersDir],
